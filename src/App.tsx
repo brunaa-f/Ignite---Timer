@@ -8,9 +8,11 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Button variant="primary" />
+      <Button variant="secundary" />
+      <Button variant="primary" />
+      <Button variant="primary" />
       <GlobalStyle />
     </ThemeProvider>
-
   )
 }
 
