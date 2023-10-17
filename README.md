@@ -3,4 +3,4 @@
     Ignite Timer
 </h1>
 
-Ignite Timer é um projeto que permite aos usuários cronometrar suas tarefas diárias além de visualizar o histórico de todas as tarefas realizadas.
+Ignite Timer is a project that allows users to time their daily tasks and view the history of all completed tasks.
