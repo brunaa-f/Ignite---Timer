@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { CountdownContainer, Separator } from "./styles";
 
 export function Countdown() {
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
   return (
     <CountdownContainer>
       <span>{minutes[0]}</span>
