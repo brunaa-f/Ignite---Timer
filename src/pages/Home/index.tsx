@@ -3,11 +3,17 @@ import { useForm } from 'react-hook-form'
 import { useEffect, useState } from "react";
 import { differenceInSeconds } from 'date-fns'
 import {
+  CountdownContainer,
+  FormContainer,
   HomeContainer,
+  MinutesAmountInput,
+  Separator,
   StartCountdownButton,
   StopCountdownButton,
+  TaskInput
 } from "./styles";
-import { NewCycleForm, NewCycleForm } from "./components/NewCycleForm";
+
+import { NewCycleForm } from "./components/NewCycleForm";
 import { Countdown } from "./components/Countdown";
 
 interface NewCycleFormData {
@@ -27,7 +33,14 @@ interface Cycle {
 export function Home() {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    }
+  })
 
   const activeCycle = cycles.find(cycle => cycle.id === activeCycleId)
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0;
@@ -114,9 +127,10 @@ export function Home() {
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
+      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <NewCycleForm />
         <Countdown />
+
         {activeCycle ? (
           <StopCountdownButton onClick={handleInterruptCycle} type="button">
             <HandPalm size="24" />
